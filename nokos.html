@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NokosKu - Order Nokos Terpercaya</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh;
+    padding: 20px 16px;
+    color: #fff;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 32px 24px;
+    max-width: 440px;
+    margin: 0 auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #00d4ff, #7b2ff7, #f107a3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 4px 0 20px;
+  }
+
+  .badge {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 16px;
+    background: rgba(0, 212, 255, 0.15);
+    color: #00d4ff;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+  }
+
+  .chat-admin { display: flex; gap: 8px; margin-bottom: 20px; }
+
+  .chat-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #fff;
+    transition: transform 0.2s;
+  }
+
+  .chat-btn:active { transform: scale(0.97); }
+  .chat-btn.tele { background: linear-gradient(135deg, #0088cc, #00aaff); }
+  .chat-btn.wa { background: linear-gradient(135deg, #25D366, #128C7E); }
+
+  .section-title {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .paket-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .paket {
+    background: rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+  }
+
+  .paket:active { transform: scale(0.98); }
+
+  .paket.active {
+    border-color: #7b2ff7;
+    background: rgba(123, 47, 247, 0.15);
+    box-shadow: 0 0 20px rgba(123, 47, 247, 0.3);
+  }
+
+  .paket-info h3 { font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+  .paket-info p { font-size: 11px; color: rgba(255, 255, 255, 0.5); }
+
+  .paket-price {
+    font-size: 16px;
+    font-weight: 800;
+    background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: right;
+  }
+
+  .stock-tag { font-size: 10px; color: #00ff88; font-weight: 600; margin-top: 2px; display: block; }
+
+  .form-group { margin-bottom: 12px; }
+  .form-label {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 6px;
+    display: block;
+    font-weight: 600;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.2s;
+    outline: none;
+  }
+
+  .form-input::placeholder { color: rgba(255, 255, 255, 0.3); }
+  .form-input:focus {
+    border-color: #7b2ff7;
+    box-shadow: 0 0 0 3px rgba(123, 47, 247, 0.15);
+    background: rgba(0, 0, 0, 0.35);
+  }
+  .form-input.error {
+    border-color: #ff4757;
+    box-shadow: 0 0 0 3px rgba(255, 71, 87, 0.15);
+  }
+
+  .btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(123, 47, 247, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: inherit;
+    transition: transform 0.2s;
+    margin-top: 6px;
+    text-decoration: none;
+  }
+
+  .btn:active { transform: scale(0.98); }
+
+  .footer {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .footer span { color: #00d4ff; }
+
+  .overlay-page {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    z-index: 999;
+    overflow-y: auto;
+    padding: 20px 16px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  }
+
+  .overlay-page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .overlay-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 24px 20px;
+    max-width: 440px;
+    margin: 0 auto;
+    color: #1a1a1a;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .overlay-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .overlay-topbar h2 { font-size: 17px; font-weight: 700; color: #1a1a1a; }
+
+  .btn-close {
+    background: #f0f0f0;
+    color: #666;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-close:active { background: #e0e0e0; }
+
+  .qris-header { text-align: center; font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+  .qris-sub { text-align: center; font-size: 12px; color: #666; margin-bottom: 16px; }
+
+  .qris-img {
+    width: 100%;
+    max-width: 260px;
+    border-radius: 12px;
+    margin: 0 auto 16px;
+    display: block;
+    background: #fff;
+    border: 1px solid #eee;
+  }
+
+  .nominal-box {
+    background: #f5f5f7;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  .nominal-label {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .nominal-value {
+    font-size: 26px;
+    font-weight: 800;
+    color: #7b2ff7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn-copy {
+    background: #7b2ff7;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .order-summary {
+    background: #f5f5f7;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 14px;
+    font-size: 12px;
+    color: #444;
+    line-height: 1.8;
+  }
+
+  .order-summary strong { color: #1a1a1a; }
+
+  .warning {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    color: #856404;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+
+  .steps {
+    text-align: left;
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: #444;
+    line-height: 1.9;
+    margin-bottom: 14px;
+  }
+
+  .steps strong { color: #1a1a1a; }
+
+  .btn-wa {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: inherit;
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+    margin-bottom: 10px;
+  }
+
+  .btn-wa:active { transform: scale(0.98); }
+
+  .btn-paid {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #e0e0e0;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+  }
+
+  .btn-paid:disabled { cursor: not-allowed; opacity: 0.7; }
+
+  .btn-paid.enabled {
+    background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(123, 47, 247, 0.4);
+    cursor: pointer;
+  }
+
+  .btn-paid.enabled:active { transform: scale(0.98); }
+
+  .btn-paid .spinner-small {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(153, 153, 153, 0.3);
+    border-top-color: #999;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  .btn-paid.enabled .spinner-small {
+    border-color: rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .waiting-info {
+    text-align: center;
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .success-header {
+    text-align: center;
+    padding: 20px 0 10px;
+  }
+
+  .success-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #00c853, #00e676);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: #fff;
+    margin: 0 auto 16px;
+    box-shadow: 0 8px 24px rgba(0, 200, 83, 0.4);
+    animation: pop 0.5s ease;
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  .success-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+
+  .success-sub {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .info-refund {
+    background: #e8f5e9;
+    border-left: 4px solid #00c853;
+    color: #1b5e20;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .nomor-list {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 14px;
+    padding-right: 4px;
+  }
+
+  .nomor-list::-webkit-scrollbar { width: 5px; }
+  .nomor-list::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+  .nomor-item {
+    background: #f5f5f7;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    animation: fadeIn 0.3s ease;
+    border-left: 3px solid #ffc107;
+  }
+
+  .nomor-item-info { flex: 1; min-width: 0; }
+
+  .nomor-hp {
+    font-size: 15px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+    word-break: break-all;
+  }
+
+  .nomor-status {
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #f57c00;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #f57c00;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .btn-copy-all {
+    width: 100%;
+    padding: 12px;
+    background: #7b2ff7;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    margin-bottom: 10px;
+  }
+
+  .btn-copy-all:active { transform: scale(0.98); }
+
+  .btn-admin {
+    width: 100%;
+    padding: 12px;
+    background: #25D366;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: inherit;
+  }
+
+  .btn-admin:active { transform: scale(0.98); }
+</style>
+</head>
+<body>
+
+  <!-- ===== HALAMAN UTAMA ===== -->
+  <div class="card">
+    <div class="logo">NokosKu</div>
+    <p class="subtitle">Order Nokos Terpercaya • Trx via Telegram 24/7</p>
+
+    <span class="badge">⚡ Instant Delivery 24/7</span>
+
+    <div class="chat-admin">
+      <a href="https://t.me/62812345679378" target="_blank" class="chat-btn tele">
+        ✈️ Telegram
+      </a>
+      <a href="https://wa.me/628737788987" target="_blank" class="chat-btn wa">
+        💬 WhatsApp
+      </a>
+    </div>
+
+    <p class="section-title">Pilih Paket</p>
+
+    <div class="paket-list" id="paketList">
+      <div class="paket" data-nama="Nokos 1 Nomor" data-harga="5000" data-stok="120" data-jumlah="1">
+        <div class="paket-info">
+          <h3>1 Nomor</h3>
+          <p>Nokos Indonesia</p>
+        </div>
+        <div>
+          <div class="paket-price">Rp 5.000</div>
+          <span class="stock-tag">Stok: 120</span>
+        </div>
+      </div>
+
+      <div class="paket active" data-nama="Nokos 5 Nomor" data-harga="20000" data-stok="426" data-jumlah="5">
+        <div class="paket-info">
+          <h3>5 Nomor</h3>
+          <p>Nokos Indonesia</p>
+        </div>
+        <div>
+          <div class="paket-price">Rp 20.000</div>
+          <span class="stock-tag">Stok: 426</span>
+        </div>
+      </div>
+
+      <div class="paket" data-nama="Nokos 10 Nomor" data-harga="30000" data-stok="121" data-jumlah="10">
+        <div class="paket-info">
+          <h3>10 Nomor</h3>
+          <p>Nokos Indonesia</p>
+        </div>
+        <div>
+          <div class="paket-price">Rp 30.000</div>
+          <span class="stock-tag">Stok: 121</span>
+        </div>
+      </div>
+
+      <div class="paket" data-nama="Nokos 50 Nomor" data-harga="100000" data-stok="458" data-jumlah="50">
+        <div class="paket-info">
+          <h3>50 Nomor</h3>
+          <p>Nokos Indonesia • Hemat</p>
+        </div>
+        <div>
+          <div class="paket-price">Rp 100.000</div>
+          <span class="stock-tag">Stok: 458</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-title">Data Pemesan</p>
+
+    <div class="form-group">
+      <label class="form-label">Nama</label>
+      <input type="text" id="inputNama" class="form-input" placeholder="Masukkan nama kamu">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <input type="email" id="inputEmail" class="form-input" placeholder="email@example.com">
+    </div>
+
+    <button class="btn" id="payBtn">Bayar Sekarang</button>
+
+    <p class="footer">Pembayaran aman via <span>QRIS</span></p>
+  </div>
+
+  <!-- ===== HALAMAN QRIS ===== -->
+  <div class="overlay-page" id="qrisPage">
+    <div class="overlay-card">
+      <div class="overlay-topbar">
+        <h2>Pembayaran QRIS</h2>
+        <button class="btn-close" id="closeQris">✕</button>
+      </div>
+
+      <div class="qris-header">Scan QRIS untuk Bayar</div>
+      <div class="qris-sub">Gunakan m-Banking / e-wallet apa saja</div>
+
+      <img src="assets/qris.png" alt="QRIS" class="qris-img">
+
+      <div class="nominal-box">
+        <div class="nominal-label">Nominal yang harus dibayar</div>
+        <div class="nominal-value">
+          <span id="nominalDisplay">Rp 20.000</span>
+          <button class="btn-copy" id="copyBtn">Copy</button>
+        </div>
+      </div>
+
+      <div class="order-summary" id="orderSummary"></div>
+
+      <div class="warning">
+        ⚠️ Masukkan nominal <strong>PERSIS</strong> seperti di atas. Kalau salah, pesanan tidak diproses.
+      </div>
+
+      <div class="steps">
+        <strong>1.</strong> Screenshot / simpan QR di atas<br>
+        <strong>2.</strong> Buka m-Banking / e-wallet (GoPay, OVO, Dana, dll)<br>
+        <strong>3.</strong> Pilih <strong>Scan QRIS</strong> → upload screenshot<br>
+        <strong>4.</strong> Masukkan nominal <strong id="stepNominal">Rp 20.000</strong><br>
+        <strong>5.</strong> Kirim bukti ke WhatsApp di bawah
+      </div>
+
+      <a href="#" id="waBtn" target="_blank" class="btn-wa">
+        📱 Kirim Bukti via WhatsApp
+      </a>
+
+      <button class="btn-paid" id="paidBtn" disabled>
+        <span class="spinner-small"></span>
+        <span id="paidText">Menunggu konfirmasi admin...</span>
+      </button>
+
+      <p class="waiting-info" id="waitingInfo">
+        Admin akan kirim link aktivasi via WhatsApp setelah pembayaran dikonfirmasi.
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== HALAMAN SUKSES ===== -->
+  <div class="overlay-page" id="successPage">
+    <div class="overlay-card">
+      <div class="overlay-topbar">
+        <h2>Pesanan Kamu</h2>
+        <button class="btn-close" id="closeSuccess">✕</button>
+      </div>
+
+      <div class="success-header">
+        <div class="success-icon">✓</div>
+        <div class="success-title">Pesanan Diproses</div>
+        <div class="success-sub">Nomor akan dikirim satu per satu di bawah</div>
+      </div>
+
+      <div class="info-refund">
+        ℹ️ <strong>Info Refund:</strong> Jika nomor gagal sebelum menerima OTP, saldo akan di-refund penuh oleh admin. Hubungi admin kalau ada nomor yang gagal.
+      </div>
+
+      <p class="section-title" style="color:#666; margin-bottom:10px;">Daftar Nomor Kamu</p>
+
+      <div class="nomor-list" id="nomorList"></div>
+
+      <button class="btn-copy-all" id="copyAllBtn">📋 Copy Semua Nomor</button>
+
+      <a href="https://wa.me/628737788987" target="_blank" class="btn-admin">
+        💬 Chat Admin Kalau Ada Kendala
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // =============================
+    // KONFIGURASI
+    // =============================
+    const WA_ADMIN = "628737788987";
+    const TELE_ADMIN = "62812345679378";
+
+    // =============================
+    // STATE
+    // =============================
+    let selectedPaket = {
+      nama: "Nokos 5 Nomor",
+      harga: 20000,
+      stok: 426,
+      jumlah: 5
+    };
+
+    let userData = { nama: "", email: "" };
+    let generatedNumbers = [];
+
+    // =============================
+    // PILIH PAKET
+    // =============================
+    const paketElements = document.querySelectorAll('.paket');
+
+    paketElements.forEach(paket => {
+      paket.addEventListener('click', () => {
+        paketElements.forEach(p => p.classList.remove('active'));
+        paket.classList.add('active');
+
+        selectedPaket = {
+          nama: paket.dataset.nama,
+          harga: parseInt(paket.dataset.harga),
+          stok: parseInt(paket.dataset.stok),
+          jumlah: parseInt(paket.dataset.jumlah)
+        };
+      });
+    });
+
+    // =============================
+    // HELPER
+    // =============================
+    function formatRupiah(angka) {
+      return 'Rp ' + angka.toLocaleString('id-ID');
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function generateNomorHP() {
+      const prefix = ['0812', '0813', '0821', '0822', '0851', '0852', '0853', '0855', '0856', '0857', '0858', '0817', '0818', '0819', '0831', '0832', '0833', '0838', '0859', '0877', '0878'];
+      const p = prefix[Math.floor(Math.random() * prefix.length)];
+      let rest = '';
+      for (let i = 0; i < 8; i++) rest += Math.floor(Math.random() * 10);
+      return p + rest;
+    }
+
+    // =============================
+    // ELEMEN
+    // =============================
+    const payBtn = document.getElementById('payBtn');
+    const qrisPage = document.getElementById('qrisPage');
+    const successPage = document.getElementById('successPage');
+    const inputNama = document.getElementById('inputNama');
+    const inputEmail = document.getElementById('inputEmail');
+
+    // =============================
+    // KLIK BAYAR
+    // =============================
+    payBtn.addEventListener('click', () => {
+      const nama = inputNama.value.trim();
+      const email = inputEmail.value.trim();
+
+      inputNama.classList.remove('error');
+      inputEmail.classList.remove('error');
+
+      if (!nama) {
+        inputNama.classList.add('error');
+        inputNama.focus();
+        alert('⚠️ Nama wajib diisi!');
+        return;
+      }
+
+      if (!email) {
+        inputEmail.classList.add('error');
+        inputEmail.focus();
+        alert('⚠️ Email wajib diisi!');
+        return;
+      }
+
+      if (!isValidEmail(email)) {
+        inputEmail.classList.add('error');
+        inputEmail.focus();
+        alert('⚠️ Format email tidak valid!');
+        return;
+      }
+
+      userData = { nama, email };
+
+      const nominal = formatRupiah(selectedPaket.harga);
+
+      document.getElementById('nominalDisplay').textContent = nominal;
+      document.getElementById('stepNominal').textContent = nominal;
+
+      document.getElementById('orderSummary').innerHTML = `
+        <strong>Ringkasan Pesanan:</strong><br>
+        Paket: ${selectedPaket.nama}<br>
+        Harga: ${nominal}<br>
+        Nama: ${nama}<br>
+        Email: ${email}
+      `;
+
+      const pesan =
+        `🛒 *ORDER NOKOSKU BARU*%0A%0A` +
+        `👤 Nama: ${encodeURIComponent(nama)}%0A` +
+        `📧 Email: ${encodeURIComponent(email)}%0A%0A` +
+        `📦 Paket: ${encodeURIComponent(selectedPaket.nama)}%0A` +
+        `💰 Total: ${encodeURIComponent(nominal)}%0A` +
+        `🕐 Waktu: ${encodeURIComponent(new Date().toLocaleString('id-ID'))}%0A%0A` +
+        `✅ Saya sudah transfer via QRIS.%0A` +
+        `Berikut bukti transfernya:`;
+
+      document.getElementById('waBtn').href = `https://wa.me/${WA_ADMIN}?text=${pesan}`;
+
+      resetPaidButton();
+
+      qrisPage.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      qrisPage.scrollTop = 0;
+      history.pushState({ page: 'qris' }, '', '#qris');
+    });
+
+    // =============================
+    // RESET TOMBOL PAID
+    // =============================
+    function resetPaidButton() {
+      const paidBtn = document.getElementById('paidBtn');
+      paidBtn.disabled = true;
+      paidBtn.classList.remove('enabled');
+      paidBtn.innerHTML = `
+        <span class="spinner-small"></span>
+        <span id="paidText">Menunggu konfirmasi admin...</span>
+      `;
+      document.getElementById('waitingInfo').innerHTML =
+        'Admin akan kirim link aktivasi via WhatsApp setelah pembayaran dikonfirmasi.';
+    }
+
+    // =============================
+    // TUTUP QRIS
+    // =============================
+    document.getElementById('closeQris').addEventListener('click', () => {
+      qrisPage.classList.remove('active');
+      document.body.style.overflow = '';
+      history.back();
+    });
+
+    // =============================
+    // COPY NOMINAL
+    // =============================
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      const nominal = selectedPaket.harga.toString();
+      try {
+        await navigator.clipboard.writeText(nominal);
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = '✓ Tersalin';
+        setTimeout(() => btn.textContent = 'Copy', 1500);
+      } catch (err) {
+        alert('Nominal: ' + nominal);
+      }
+    });
+
+    // =============================
+    // GENERATE DAFTAR NOMOR (semua "Menunggu OTP")
+    // =============================
+    function generateNomorList() {
+      const list = document.getElementById('nomorList');
+      list.innerHTML = '';
+      generatedNumbers = [];
+
+      const total = selectedPaket.jumlah;
+
+      for (let i = 0; i < total; i++) {
+        const hp = generateNomorHP();
+        generatedNumbers.push(hp);
+
+        const item = document.createElement('div');
+        item.className = 'nomor-item';
+        item.innerHTML = `
+          <div class="nomor-item-info">
+            <div class="nomor-hp">${hp}</div>
+            <div class="nomor-status">
+              <span class="status-dot"></span>
+              <span>Menunggu OTP...</span>
+            </div>
+          </div>
+        `;
+
+        setTimeout(() => {
+          list.appendChild(item);
+          item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, i * 250);
+      }
+    }
+
+    // =============================
+    // COPY SEMUA NOMOR
+    // =============================
+    document.getElementById('copyAllBtn').addEventListener('click', async () => {
+      if (generatedNumbers.length === 0) return;
+
+      const teks = generatedNumbers.map((hp, i) => `${i + 1}. ${hp}`).join('\n');
+      try {
+        await navigator.clipboard.writeText(teks);
+        const btn = document.getElementById('copyAllBtn');
+        btn.textContent = `✓ ${generatedNumbers.length} Nomor Tersalin`;
+        setTimeout(() => btn.textContent = '📋 Copy Semua Nomor', 2000);
+      } catch (err) {
+        alert(teks);
+      }
+    });
+
+    // =============================
+    // TUTUP HALAMAN SUKSES
+    // =============================
+    document.getElementById('closeSuccess').addEventListener('click', () => {
+      successPage.classList.remove('active');
+      document.body.style.overflow = '';
+      history.back();
+    });
+
+    // =============================
+    // TOMBOL BACK HP
+    // =============================
+    window.addEventListener('popstate', () => {
+      if (successPage.classList.contains('active')) {
+        successPage.classList.remove('active');
+      } else if (qrisPage.classList.contains('active')) {
+        qrisPage.classList.remove('active');
+      }
+      document.body.style.overflow = '';
+    });
+
+    inputNama.addEventListener('input', () => inputNama.classList.remove('error'));
+    inputEmail.addEventListener('input', () => inputEmail.classList.remove('error'));
+
+    // =============================
+    // CEK TOKEN AKTIVASI DARI URL
+    // =============================
+    function checkActivationToken() {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+      const jumlah = parseInt(params.get('jumlah') || '5');
+      const nama = params.get('nama') || 'Pelanggan';
+      const paket = params.get('paket') || `Nokos ${jumlah} Nomor`;
+
+      if (!token) return;
+
+      // Validasi format token (8 karakter alfanumerik)
+      if (!/^[A-Z0-9]{8}$/.test(token)) {
+        alert('❌ Link aktivasi tidak valid.');
+        return;
+      }
+
+      // Set data user & paket
+      userData = { nama: nama, email: '' };
+      selectedPaket = {
+        nama: paket,
+        harga: 0,
+        stok: 0,
+        jumlah: jumlah
+      };
+
+      // Auto buka halaman sukses
+      setTimeout(() => {
+        generateNomorList();
+        successPage.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        history.pushState({ page: 'success' }, '', '#sukses');
+      }, 600);
+    }
+
+    // Jalankan cek token saat halaman dibuka
+    checkActivationToken();
+  </script>
+
+</body>
+</html>
