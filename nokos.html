@@ -64,6 +64,49 @@
     border: 1px solid rgba(0, 212, 255, 0.3);
   }
 
+  /* ===== IKLAN ===== */
+  .ads-banner {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 87, 34, 0.15));
+    border: 1px solid rgba(255, 193, 7, 0.35);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    text-align: center;
+    animation: glow 2s infinite alternate;
+  }
+
+  @keyframes glow {
+    from { box-shadow: 0 0 8px rgba(255, 193, 7, 0.2); }
+    to   { box-shadow: 0 0 20px rgba(255, 193, 7, 0.5); }
+  }
+
+  .ads-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #ffc107;
+    margin-bottom: 4px;
+  }
+
+  .ads-desc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+  }
+
+  .ads-desc strong { color: #ff5722; font-weight: 800; }
+
+  .ads-min {
+    display: inline-block;
+    margin-top: 6px;
+    background: rgba(255, 87, 34, 0.2);
+    color: #ff7043;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid rgba(255, 87, 34, 0.3);
+  }
+
   .chat-admin { display: flex; gap: 8px; margin-bottom: 20px; }
 
   .chat-btn {
@@ -200,6 +243,160 @@
   }
   .footer span { color: #00d4ff; }
 
+  /* ===== HALAMAN LOGIN ===== */
+  .login-page {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+    overflow-y: auto;
+    transition: opacity 0.3s ease, visibility 0.3s;
+  }
+
+  .login-page.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .login-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 32px 24px;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.5s ease;
+    margin: auto;
+  }
+
+  .login-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    margin: 0 auto 16px;
+    box-shadow: 0 8px 24px rgba(123, 47, 247, 0.4);
+  }
+
+  .login-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 4px;
+    background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .login-sub {
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 24px;
+  }
+
+  .login-tabs {
+    display: flex;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 5px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+
+  .login-tab {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+  }
+
+  .login-tab.active {
+    background: linear-gradient(90deg, #00d4ff, #7b2ff7);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(123, 47, 247, 0.4);
+  }
+
+  .login-alert {
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-bottom: 14px;
+    display: none;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .login-alert.show { display: block; }
+  .login-alert.error {
+    background: rgba(255, 71, 87, 0.15);
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    color: #ff6b7a;
+  }
+  .login-alert.success {
+    background: rgba(0, 200, 83, 0.15);
+    border: 1px solid rgba(0, 200, 83, 0.3);
+    color: #00e676;
+  }
+
+  .user-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+
+  .user-bar-name {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .user-bar-name span { color: #00d4ff; }
+
+  .btn-logout {
+    background: rgba(255, 71, 87, 0.15);
+    color: #ff6b7a;
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+  }
+
+  .btn-logout:active { background: rgba(255, 71, 87, 0.3); }
+
+  /* ===== OVERLAY PAGE ===== */
   .overlay-page {
     position: fixed;
     inset: 0;
@@ -268,6 +465,8 @@
     display: block;
     background: #fff;
     border: 1px solid #eee;
+    min-height: 200px;
+    object-fit: contain;
   }
 
   .nominal-box {
@@ -411,9 +610,7 @@
     border-top-color: #fff;
   }
 
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
   .waiting-info {
     text-align: center;
@@ -423,10 +620,7 @@
     line-height: 1.5;
   }
 
-  .success-header {
-    text-align: center;
-    padding: 20px 0 10px;
-  }
+  .success-header { text-align: center; padding: 20px 0 10px; }
 
   .success-icon {
     width: 70px;
@@ -570,20 +764,68 @@
 </head>
 <body>
 
+  <!-- ===== HALAMAN LOGIN ===== -->
+  <div class="login-page" id="loginPage">
+    <div class="login-card">
+      <div class="login-icon">🔐</div>
+      <div class="login-title" id="loginTitle">Masuk NokosKu</div>
+      <p class="login-sub" id="loginSub">Login untuk mulai order nokos</p>
+
+      <div class="login-tabs">
+        <button type="button" class="login-tab active" id="tabLogin">Masuk</button>
+        <button type="button" class="login-tab" id="tabRegister">Daftar</button>
+      </div>
+
+      <div class="login-alert" id="loginAlert"></div>
+
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" id="authEmail" class="form-input" placeholder="email@example.com" autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" id="authPassword" class="form-input" placeholder="Minimal 6 karakter" autocomplete="current-password">
+      </div>
+
+      <div class="form-group" id="confirmGroup" style="display:none;">
+        <label class="form-label">Konfirmasi Password</label>
+        <input type="password" id="authConfirm" class="form-input" placeholder="Ulangi password" autocomplete="new-password">
+      </div>
+
+      <button type="button" class="btn" id="authBtn">Masuk</button>
+
+      <p class="footer" style="margin-top:14px;">
+        <span id="authFooterText">Belum punya akun?</span>
+        <span id="authFooterLink" style="cursor:pointer; text-decoration:underline; color:#00d4ff;">Daftar di sini</span>
+      </p>
+    </div>
+  </div>
+
   <!-- ===== HALAMAN UTAMA ===== -->
-  <div class="card">
+  <div class="card" id="mainCard" style="display:none;">
     <div class="logo">NokosKu</div>
     <p class="subtitle">Order Nokos Terpercaya • Trx via Telegram 24/7</p>
 
+    <div class="user-bar">
+      <div class="user-bar-name">👤 <span id="userNameDisplay">User</span></div>
+      <button type="button" class="btn-logout" id="logoutBtn">Logout</button>
+    </div>
+
     <span class="badge">⚡ Instant Delivery 24/7</span>
 
+    <!-- ===== IKLAN ===== -->
+    <div class="ads-banner">
+      <div class="ads-title">🔥 PROMO SPESIAL 🔥</div>
+      <div class="ads-desc">
+        Nokos Indo cuma <strong>Rp 2.000 an</strong> aja!
+      </div>
+      <span class="ads-min">Minimal deposit Rp 20.000</span>
+    </div>
+
     <div class="chat-admin">
-      <a href="t.me/rendyblast" target="_blank" class="chat-btn tele">
-        ✈️ Telegram
-      </a>
-      <a href="https://wa.me/6289526090045" target="_blank" class="chat-btn wa">
-        💬 WhatsApp
-      </a>
+      <a href="https://t.me/rendyblast" target="_blank" class="chat-btn tele">✈️ Telegram</a>
+      <a href="https://wa.me/6289526090045" target="_blank" class="chat-btn wa">💬 WhatsApp</a>
     </div>
 
     <p class="section-title">Pilih Paket</p>
@@ -646,9 +888,9 @@
       <input type="email" id="inputEmail" class="form-input" placeholder="email@example.com">
     </div>
 
-    <button class="btn" id="payBtn">Bayar Sekarang</button>
+    <button type="button" class="btn" id="payBtn">Bayar Sekarang</button>
 
-    <p class="footer">Pembayaran aman via <span>QRIS</span></p>
+    <p class="footer">Pembayaran aman via <span>QRIS</span> • Min. deposit Rp 20.000</p>
   </div>
 
   <!-- ===== HALAMAN QRIS ===== -->
@@ -656,19 +898,19 @@
     <div class="overlay-card">
       <div class="overlay-topbar">
         <h2>Pembayaran QRIS</h2>
-        <button class="btn-close" id="closeQris">✕</button>
+        <button type="button" class="btn-close" id="closeQris">✕</button>
       </div>
 
       <div class="qris-header">Scan QRIS untuk Bayar</div>
       <div class="qris-sub">Gunakan m-Banking / e-wallet apa saja</div>
 
-      <img src="assets/qris.jpg" alt="QRIS" class="qris-img">
+      <img src="assets/qris.jpg" alt="QRIS" class="qris-img" onerror="this.style.background='#f0f0f0'; this.alt='QRIS tidak ditemukan';">
 
       <div class="nominal-box">
         <div class="nominal-label">Nominal yang harus dibayar</div>
         <div class="nominal-value">
           <span id="nominalDisplay">Rp 20.000</span>
-          <button class="btn-copy" id="copyBtn">Copy</button>
+          <button type="button" class="btn-copy" id="copyBtn">Copy</button>
         </div>
       </div>
 
@@ -686,11 +928,9 @@
         <strong>5.</strong> Kirim bukti ke WhatsApp di bawah
       </div>
 
-      <a href="#" id="waBtn" target="_blank" class="btn-wa">
-        📱 Kirim Bukti via WhatsApp
-      </a>
+      <a href="#" id="waBtn" target="_blank" class="btn-wa">📱 Kirim Bukti via WhatsApp</a>
 
-      <button class="btn-paid" id="paidBtn" disabled>
+      <button type="button" class="btn-paid" id="paidBtn" disabled>
         <span class="spinner-small"></span>
         <span id="paidText">Menunggu konfirmasi admin...</span>
       </button>
@@ -706,7 +946,7 @@
     <div class="overlay-card">
       <div class="overlay-topbar">
         <h2>Pesanan Kamu</h2>
-        <button class="btn-close" id="closeSuccess">✕</button>
+        <button type="button" class="btn-close" id="closeSuccess">✕</button>
       </div>
 
       <div class="success-header">
@@ -723,7 +963,7 @@
 
       <div class="nomor-list" id="nomorList"></div>
 
-      <button class="btn-copy-all" id="copyAllBtn">📋 Copy Semua Nomor</button>
+      <button type="button" class="btn-copy-all" id="copyAllBtn">📋 Copy Semua Nomor</button>
 
       <a href="https://wa.me/628737788987" target="_blank" class="btn-admin">
         💬 Chat Admin Kalau Ada Kendala
@@ -732,15 +972,16 @@
   </div>
 
   <script>
-    // =============================
+    // =========================================
     // KONFIGURASI
-    // =============================
-    const WA_ADMIN = "wa.me/6289526090045";
-    const TELE_ADMIN = "t.me/rendyblast";
+    // =========================================
+    const WA_ADMIN = "6289526090045";
+    const USERS_KEY = "nokosku_users";
+    const SESSION_KEY = "nokosku_session";
 
-    // =============================
+    // =========================================
     // STATE
-    // =============================
+    // =========================================
     let selectedPaket = {
       nama: "Nokos 5 Nomor",
       harga: 20000,
@@ -750,15 +991,312 @@
 
     let userData = { nama: "", email: "" };
     let generatedNumbers = [];
+    let authMode = 'login';
 
-    // =============================
+    // =========================================
+    // HELPER AUTH
+    // =========================================
+    function hashPassword(pass) {
+      let hash = 0;
+      const str = 'nokosku_salt_2024' + pass + 'nokosku_salt_2024';
+      for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+      }
+      return 'h' + Math.abs(hash).toString(36) + '_' + pass.length;
+    }
+
+    function getUsers() {
+      try {
+        const raw = localStorage.getItem(USERS_KEY);
+        return raw ? JSON.parse(raw) : {};
+      } catch (e) { return {}; }
+    }
+
+    function saveUsers(users) {
+      localStorage.setItem(USERS_KEY, JSON.stringify(users));
+    }
+
+    function saveSession(email) {
+      localStorage.setItem(SESSION_KEY, JSON.stringify({ email: email, loginAt: Date.now() }));
+    }
+
+    function getSession() {
+      try {
+        const raw = localStorage.getItem(SESSION_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch (e) { return null; }
+    }
+
+    function clearSession() {
+      localStorage.removeItem(SESSION_KEY);
+    }
+
+    // =========================================
+    // AMBIL ELEMEN
+    // =========================================
+    const loginPage = document.getElementById('loginPage');
+    const mainCard = document.getElementById('mainCard');
+    const authEmail = document.getElementById('authEmail');
+    const authPassword = document.getElementById('authPassword');
+    const authConfirm = document.getElementById('authConfirm');
+    const confirmGroup = document.getElementById('confirmGroup');
+    const loginAlert = document.getElementById('loginAlert');
+    const authBtn = document.getElementById('authBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    const userNameDisplay = document.getElementById('userNameDisplay');
+    const loginTitle = document.getElementById('loginTitle');
+    const loginSub = document.getElementById('loginSub');
+    const authFooterText = document.getElementById('authFooterText');
+    const authFooterLink = document.getElementById('authFooterLink');
+    const tabLogin = document.getElementById('tabLogin');
+    const tabRegister = document.getElementById('tabRegister');
+
+    // =========================================
+    // TAMPILKAN ALERT
+    // =========================================
+    function showAlert(message, type) {
+      loginAlert.textContent = message;
+      loginAlert.className = 'login-alert show ' + (type || 'error');
+    }
+
+    function hideAlert() {
+      loginAlert.className = 'login-alert';
+      loginAlert.textContent = '';
+    }
+
+    function clearErrors() {
+      authEmail.classList.remove('error');
+      authPassword.classList.remove('error');
+      authConfirm.classList.remove('error');
+    }
+
+    // =========================================
+    // GANTI MODE LOGIN / DAFTAR
+    // =========================================
+    function setMode(mode) {
+      authMode = mode;
+      hideAlert();
+      clearErrors();
+      authPassword.value = '';
+      authConfirm.value = '';
+
+      if (mode === 'login') {
+        tabLogin.classList.add('active');
+        tabRegister.classList.remove('active');
+        loginTitle.textContent = 'Masuk NokosKu';
+        loginSub.textContent = 'Login untuk mulai order nokos';
+        confirmGroup.style.display = 'none';
+        authBtn.textContent = 'Masuk';
+        authFooterText.textContent = 'Belum punya akun?';
+        authFooterLink.textContent = 'Daftar di sini';
+      } else {
+        tabLogin.classList.remove('active');
+        tabRegister.classList.add('active');
+        loginTitle.textContent = 'Daftar NokosKu';
+        loginSub.textContent = 'Buat akun baru untuk mulai order';
+        confirmGroup.style.display = 'block';
+        authBtn.textContent = 'Daftar Sekarang';
+        authFooterText.textContent = 'Sudah punya akun?';
+        authFooterLink.textContent = 'Masuk di sini';
+      }
+    }
+
+    // =========================================
+    // EVENT TAB & FOOTER LINK
+    // =========================================
+    tabLogin.addEventListener('click', function () {
+      setMode('login');
+    });
+
+    tabRegister.addEventListener('click', function () {
+      setMode('register');
+    });
+
+    authFooterLink.addEventListener('click', function () {
+      if (authMode === 'login') {
+        setMode('register');
+      } else {
+        setMode('login');
+      }
+    });
+
+    // =========================================
+    // TOMBOL SUBMIT (LOGIN / DAFTAR)
+    // =========================================
+    authBtn.addEventListener('click', function () {
+      const email = authEmail.value.trim().toLowerCase();
+      const password = authPassword.value;
+      const confirm = authConfirm.value;
+
+      clearErrors();
+      hideAlert();
+
+      // Validasi email
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        authEmail.classList.add('error');
+        showAlert('Masukkan email yang valid!');
+        authEmail.focus();
+        return;
+      }
+
+      // Validasi password
+      if (!password || password.length < 6) {
+        authPassword.classList.add('error');
+        showAlert('Password minimal 6 karakter!');
+        authPassword.focus();
+        return;
+      }
+
+      const users = getUsers();
+
+      // ===== MODE DAFTAR =====
+      if (authMode === 'register') {
+        if (password !== confirm) {
+          authConfirm.classList.add('error');
+          showAlert('Konfirmasi password tidak sama!');
+          authConfirm.focus();
+          return;
+        }
+
+        if (users[email]) {
+          authEmail.classList.add('error');
+          showAlert('Email sudah terdaftar. Silakan login.');
+          return;
+        }
+
+        users[email] = {
+          email: email,
+          password: hashPassword(password),
+          nama: email.split('@')[0],
+          createdAt: Date.now()
+        };
+        saveUsers(users);
+
+        showAlert('✓ Pendaftaran berhasil! Silakan login.', 'success');
+
+        setTimeout(function () {
+          setMode('login');
+          authEmail.value = email;
+          authPassword.value = '';
+          showAlert('✓ Akun dibuat. Masukkan password kamu untuk login.', 'success');
+        }, 1000);
+
+        return;
+      }
+
+      // ===== MODE LOGIN =====
+      const user = users[email];
+
+      if (!user) {
+        authEmail.classList.add('error');
+        showAlert('Email belum terdaftar. Silakan daftar dulu.');
+        return;
+      }
+
+      if (user.password !== hashPassword(password)) {
+        authPassword.classList.add('error');
+        showAlert('Password salah! Coba lagi.');
+        authPassword.focus();
+        return;
+      }
+
+      saveSession(email);
+      showMainApp(user);
+    });
+
+    // =========================================
+    // ENTER UNTUK SUBMIT
+    // =========================================
+    authEmail.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); authBtn.click(); }
+    });
+    authPassword.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); authBtn.click(); }
+    });
+    authConfirm.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); authBtn.click(); }
+    });
+
+    // =========================================
+    // CLEAR ERROR SAAT NGETIK
+    // =========================================
+    authEmail.addEventListener('input', function () {
+      authEmail.classList.remove('error');
+      hideAlert();
+    });
+    authPassword.addEventListener('input', function () {
+      authPassword.classList.remove('error');
+      hideAlert();
+    });
+    authConfirm.addEventListener('input', function () {
+      authConfirm.classList.remove('error');
+      hideAlert();
+    });
+
+    // =========================================
+    // TAMPILKAN HALAMAN UTAMA
+    // =========================================
+    function showMainApp(user) {
+      loginPage.classList.add('hidden');
+      mainCard.style.display = 'block';
+      userNameDisplay.textContent = user.nama || user.email;
+      document.getElementById('inputNama').value = user.nama || '';
+      document.getElementById('inputEmail').value = user.email || '';
+    }
+
+    // =========================================
+    // TAMPILKAN HALAMAN LOGIN
+    // =========================================
+    function showLoginPage() {
+      loginPage.classList.remove('hidden');
+      mainCard.style.display = 'none';
+      authEmail.value = '';
+      authPassword.value = '';
+      authConfirm.value = '';
+      clearErrors();
+      hideAlert();
+      setMode('login');
+    }
+
+    // =========================================
+    // LOGOUT
+    // =========================================
+    logoutBtn.addEventListener('click', function () {
+      if (confirm('Yakin mau logout?')) {
+        clearSession();
+        showLoginPage();
+      }
+    });
+
+    // =========================================
+    // INIT: CEK SESSION
+    // =========================================
+    function initAuth() {
+      const session = getSession();
+      if (session && session.email) {
+        const users = getUsers();
+        const user = users[session.email];
+        if (user) {
+          showMainApp(user);
+          return;
+        }
+        clearSession();
+      }
+      showLoginPage();
+    }
+
+    initAuth();
+
+    // =========================================
     // PILIH PAKET
-    // =============================
+    // =========================================
     const paketElements = document.querySelectorAll('.paket');
 
-    paketElements.forEach(paket => {
-      paket.addEventListener('click', () => {
-        paketElements.forEach(p => p.classList.remove('active'));
+    paketElements.forEach(function (paket) {
+      paket.addEventListener('click', function () {
+        paketElements.forEach(function (p) { p.classList.remove('active'); });
         paket.classList.add('active');
 
         selectedPaket = {
@@ -770,9 +1308,9 @@
       });
     });
 
-    // =============================
-    // HELPER
-    // =============================
+    // =========================================
+    // HELPER UMUM
+    // =========================================
     function formatRupiah(angka) {
       return 'Rp ' + angka.toLocaleString('id-ID');
     }
@@ -789,19 +1327,19 @@
       return p + rest;
     }
 
-    // =============================
-    // ELEMEN
-    // =============================
+    // =========================================
+    // ELEMEN ORDER
+    // =========================================
     const payBtn = document.getElementById('payBtn');
     const qrisPage = document.getElementById('qrisPage');
     const successPage = document.getElementById('successPage');
     const inputNama = document.getElementById('inputNama');
     const inputEmail = document.getElementById('inputEmail');
 
-    // =============================
+    // =========================================
     // KLIK BAYAR
-    // =============================
-    payBtn.addEventListener('click', () => {
+    // =========================================
+    payBtn.addEventListener('click', function () {
       const nama = inputNama.value.trim();
       const email = inputEmail.value.trim();
 
@@ -829,32 +1367,31 @@
         return;
       }
 
-      userData = { nama, email };
+      userData = { nama: nama, email: email };
 
       const nominal = formatRupiah(selectedPaket.harga);
 
       document.getElementById('nominalDisplay').textContent = nominal;
       document.getElementById('stepNominal').textContent = nominal;
 
-      document.getElementById('orderSummary').innerHTML = `
-        <strong>Ringkasan Pesanan:</strong><br>
-        Paket: ${selectedPaket.nama}<br>
-        Harga: ${nominal}<br>
-        Nama: ${nama}<br>
-        Email: ${email}
-      `;
+      document.getElementById('orderSummary').innerHTML =
+        '<strong>Ringkasan Pesanan:</strong><br>' +
+        'Paket: ' + selectedPaket.nama + '<br>' +
+        'Harga: ' + nominal + '<br>' +
+        'Nama: ' + nama + '<br>' +
+        'Email: ' + email;
 
       const pesan =
-        `🛒 *ORDER NOKOSKU BARU*%0A%0A` +
-        `👤 Nama: ${encodeURIComponent(nama)}%0A` +
-        `📧 Email: ${encodeURIComponent(email)}%0A%0A` +
-        `📦 Paket: ${encodeURIComponent(selectedPaket.nama)}%0A` +
-        `💰 Total: ${encodeURIComponent(nominal)}%0A` +
-        `🕐 Waktu: ${encodeURIComponent(new Date().toLocaleString('id-ID'))}%0A%0A` +
-        `✅ Saya sudah transfer via QRIS.%0A` +
-        `Berikut bukti transfernya:`;
+        '🛒 *ORDER NOKOSKU BARU*%0A%0A' +
+        '👤 Nama: ' + encodeURIComponent(nama) + '%0A' +
+        '📧 Email: ' + encodeURIComponent(email) + '%0A%0A' +
+        '📦 Paket: ' + encodeURIComponent(selectedPaket.nama) + '%0A' +
+        '💰 Total: ' + encodeURIComponent(nominal) + '%0A' +
+        '🕐 Waktu: ' + encodeURIComponent(new Date().toLocaleString('id-ID')) + '%0A%0A' +
+        '✅ Saya sudah transfer via QRIS.%0A' +
+        'Berikut bukti transfernya:';
 
-      document.getElementById('waBtn').href = `https://wa.me/${WA_ADMIN}?text=${pesan}`;
+      document.getElementById('waBtn').href = 'https://wa.me/' + WA_ADMIN + '?text=' + pesan;
 
       resetPaidButton();
 
@@ -864,48 +1401,45 @@
       history.pushState({ page: 'qris' }, '', '#qris');
     });
 
-    // =============================
+    // =========================================
     // RESET TOMBOL PAID
-    // =============================
+    // =========================================
     function resetPaidButton() {
       const paidBtn = document.getElementById('paidBtn');
       paidBtn.disabled = true;
       paidBtn.classList.remove('enabled');
-      paidBtn.innerHTML = `
-        <span class="spinner-small"></span>
-        <span id="paidText">Menunggu konfirmasi admin...</span>
-      `;
+      paidBtn.innerHTML = '<span class="spinner-small"></span><span id="paidText">Menunggu konfirmasi admin...</span>';
       document.getElementById('waitingInfo').innerHTML =
         'Admin akan kirim link aktivasi via WhatsApp setelah pembayaran dikonfirmasi.';
     }
 
-    // =============================
+    // =========================================
     // TUTUP QRIS
-    // =============================
-    document.getElementById('closeQris').addEventListener('click', () => {
+    // =========================================
+    document.getElementById('closeQris').addEventListener('click', function () {
       qrisPage.classList.remove('active');
       document.body.style.overflow = '';
       history.back();
     });
 
-    // =============================
+    // =========================================
     // COPY NOMINAL
-    // =============================
-    document.getElementById('copyBtn').addEventListener('click', async () => {
+    // =========================================
+    document.getElementById('copyBtn').addEventListener('click', async function () {
       const nominal = selectedPaket.harga.toString();
       try {
         await navigator.clipboard.writeText(nominal);
         const btn = document.getElementById('copyBtn');
         btn.textContent = '✓ Tersalin';
-        setTimeout(() => btn.textContent = 'Copy', 1500);
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
       } catch (err) {
         alert('Nominal: ' + nominal);
       }
     });
 
-    // =============================
-    // GENERATE DAFTAR NOMOR (semua "Menunggu OTP")
-    // =============================
+    // =========================================
+    // GENERATE DAFTAR NOMOR
+    // =========================================
     function generateNomorList() {
       const list = document.getElementById('nomorList');
       list.innerHTML = '';
@@ -919,53 +1453,53 @@
 
         const item = document.createElement('div');
         item.className = 'nomor-item';
-        item.innerHTML = `
-          <div class="nomor-item-info">
-            <div class="nomor-hp">${hp}</div>
-            <div class="nomor-status">
-              <span class="status-dot"></span>
-              <span>Menunggu OTP...</span>
-            </div>
-          </div>
-        `;
+        item.innerHTML =
+          '<div class="nomor-item-info">' +
+            '<div class="nomor-hp">' + hp + '</div>' +
+            '<div class="nomor-status">' +
+              '<span class="status-dot"></span>' +
+              '<span>Menunggu OTP...</span>' +
+            '</div>' +
+          '</div>';
 
-        setTimeout(() => {
-          list.appendChild(item);
-          item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, i * 250);
+        (function (el, delay) {
+          setTimeout(function () {
+            list.appendChild(el);
+            el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, delay);
+        })(item, i * 250);
       }
     }
 
-    // =============================
+    // =========================================
     // COPY SEMUA NOMOR
-    // =============================
-    document.getElementById('copyAllBtn').addEventListener('click', async () => {
+    // =========================================
+    document.getElementById('copyAllBtn').addEventListener('click', async function () {
       if (generatedNumbers.length === 0) return;
-
-      const teks = generatedNumbers.map((hp, i) => `${i + 1}. ${hp}`).join('\n');
+      const teks = generatedNumbers.map(function (hp, i) { return (i + 1) + '. ' + hp; }).join('\n');
       try {
         await navigator.clipboard.writeText(teks);
         const btn = document.getElementById('copyAllBtn');
-        btn.textContent = `✓ ${generatedNumbers.length} Nomor Tersalin`;
-        setTimeout(() => btn.textContent = '📋 Copy Semua Nomor', 2000);
+        btn.textContent = '✓ ' + generatedNumbers.length + ' Nomor Tersalin';
+        setTimeout(function () { btn.textContent = '📋 Copy Semua Nomor'; }, 2000);
       } catch (err) {
         alert(teks);
       }
     });
 
-    // =============================
+    // =========================================
     // TUTUP HALAMAN SUKSES
-    // =============================
-    document.getElementById('closeSuccess').addEventListener('click', () => {
+    // =========================================
+    document.getElementById('closeSuccess').addEventListener('click', function () {
       successPage.classList.remove('active');
       document.body.style.overflow = '';
       history.back();
     });
 
-    // =============================
+    // =========================================
     // TOMBOL BACK HP
-    // =============================
-    window.addEventListener('popstate', () => {
+    // =========================================
+    window.addEventListener('popstate', function () {
       if (successPage.classList.contains('active')) {
         successPage.classList.remove('active');
       } else if (qrisPage.classList.contains('active')) {
@@ -974,28 +1508,26 @@
       document.body.style.overflow = '';
     });
 
-    inputNama.addEventListener('input', () => inputNama.classList.remove('error'));
-    inputEmail.addEventListener('input', () => inputEmail.classList.remove('error'));
+    inputNama.addEventListener('input', function () { inputNama.classList.remove('error'); });
+    inputEmail.addEventListener('input', function () { inputEmail.classList.remove('error'); });
 
-    // =============================
+    // =========================================
     // CEK TOKEN AKTIVASI DARI URL
-    // =============================
+    // =========================================
     function checkActivationToken() {
       const params = new URLSearchParams(window.location.search);
       const token = params.get('token');
       const jumlah = parseInt(params.get('jumlah') || '5');
       const nama = params.get('nama') || 'Pelanggan';
-      const paket = params.get('paket') || `Nokos ${jumlah} Nomor`;
+      const paket = params.get('paket') || ('Nokos ' + jumlah + ' Nomor');
 
       if (!token) return;
 
-      // Validasi format token (8 karakter alfanumerik)
       if (!/^[A-Z0-9]{8}$/.test(token)) {
         alert('❌ Link aktivasi tidak valid.');
         return;
       }
 
-      // Set data user & paket
       userData = { nama: nama, email: '' };
       selectedPaket = {
         nama: paket,
@@ -1004,8 +1536,7 @@
         jumlah: jumlah
       };
 
-      // Auto buka halaman sukses
-      setTimeout(() => {
+      setTimeout(function () {
         generateNomorList();
         successPage.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -1013,7 +1544,6 @@
       }, 600);
     }
 
-    // Jalankan cek token saat halaman dibuka
     checkActivationToken();
   </script>
 
