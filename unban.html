@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Automation Unban Whatsapp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b141a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            height: 100dvh;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 450px;
+            height: 100%;
+            max-height: 850px;
+            background-color: #111b21;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Header */
+        .chat-header {
+            background-color: #202c33;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e9edef;
+            border-bottom: 1px solid #2a3942;
+            flex-shrink: 0;
+        }
+
+        .chat-header .avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #00a884;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 18px;
+            color: white;
+        }
+
+        .chat-header .info h3 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .chat-header .info span {
+            font-size: 12px;
+            color: #8696a0;
+        }
+
+        /* Area Pesan */
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: #0b141a;
+            scroll-behavior: smooth;
+        }
+
+        /* Bubble Chat */
+        .message {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .message.bot {
+            background-color: #202c33;
+            color: #e9edef;
+            align-self: flex-start;
+            border-top-left-radius: 0;
+        }
+
+        .message.user {
+            background-color: #005c4b;
+            color: #e9edef;
+            align-self: flex-end;
+            border-top-right-radius: 0;
+        }
+
+        .message .time {
+            display: block;
+            font-size: 10px;
+            color: #8696a0;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        /* Gambar QRIS */
+        .qris-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 2px solid #00a884;
+        }
+
+        /* Area Tombol - FIT TO PHONE & BISA SCROLL */
+        .chat-input-area {
+            padding: 15px;
+            background-color: #202c33;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            border-top: 1px solid #2a3942;
+            flex-shrink: 0;
+            max-height: 45vh; 
+            overflow-y: auto; 
+        }
+
+        .btn-option {
+            background-color: #2a3942;
+            color: #e9edef;
+            border: 1px solid #3b4a54;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 14px;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .btn-option:hover {
+            background-color: #3b4a54;
+            border-color: #00a884;
+        }
+
+        .btn-option.cancel {
+            color: #f15c6d;
+            border-color: #f15c6d;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Tombol Beli Kode Akses (Khusus) */
+        .btn-buy {
+            background-color: #1f3a2e;
+            border-color: #00a884;
+            color: #00a884;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .btn-buy:hover {
+            background-color: #2a4a3a;
+        }
+
+        /* Kotak Input Teks */
+        .text-input-wrapper {
+            display: flex;
+            gap: 8px;
+            padding: 10px 15px;
+            background-color: #202c33;
+            border-top: 1px solid #2a3942;
+            flex-shrink: 0;
+        }
+
+        .text-input-wrapper input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 20px;
+            border: none;
+            background-color: #2a3942;
+            color: #e9edef;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .text-input-wrapper button {
+            background-color: #00a884;
+            border: none;
+            color: white;
+            padding: 0 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .text-input-wrapper button:hover {
+            background-color: #008f6f;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scrollbar */
+        .chat-messages::-webkit-scrollbar,
+        .chat-input-area::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-messages::-webkit-scrollbar-thumb,
+        .chat-input-area::-webkit-scrollbar-thumb {
+            background-color: #374045;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="avatar">A</div>
+            <div class="info">
+                <h3>AutoWA System Bot</h3>
+                <span>online</span>
+            </div>
+        </div>
+
+        <!-- Area Pesan -->
+        <div class="chat-messages" id="chatMessages"></div>
+
+        <!-- Area Tombol Menu -->
+        <div class="chat-input-area" id="chatInputArea"></div>
+
+        <!-- Area Input Teks -->
+        <div class="text-input-wrapper hidden" id="textInputWrapper">
+            <input type="text" id="userInput" placeholder="Ketik di sini..." autocomplete="off">
+            <button onclick="submitTextInput()">Kirim</button>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInputArea = document.getElementById('chatInputArea');
+        const textInputWrapper = document.getElementById('textInputWrapper');
+        const userInput = document.getElementById('userInput');
+
+        let currentState = 'MENU_UTAMA';
+        let userData = { nomorWA: '', alasan: '' };
+
+        // Waktu
+        function getTime() {
+            const now = new Date();
+            return now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+        }
+
+        // Tambah Pesan ke Layar
+        function addMessage(text, sender, isImage = false) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', sender);
+            
+            if (isImage) {
+                // Jika pesan berupa gambar QRIS
+                msgDiv.innerHTML = `
+                    <div style="text-align: center;">
+                        <img src="qris.png" alt="QRIS" class="qris-image" onerror="this.src='https://placehold.co/300x300/202c33/00a884?text=QRIS.png+Tidak+Ditemukan'">
+                        <p><b>Total: Rp33.000</b></p>
+                        <p style="font-size: 12px; color: #8696a0;">Scan QRIS di atas untuk membayar.</p>
+                    </div>
+                    <span class="time">${getTime()}</span>`;
+            } else {
+                // Pesan teks biasa
+                msgDiv.innerHTML = `${text} <span class="time">${getTime()}</span>`;
+            }
+            
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // FUNGSI PENTING: Membersihkan area tombol sebelum merender yang baru
+        function clearInputArea() {
+            chatInputArea.innerHTML = ''; 
+            textInputWrapper.classList.add('hidden'); 
+        }
+
+        // Render Tombol Baru
+        function renderButtons(buttons) {
+            clearInputArea(); 
+            
+            buttons.forEach(btn => {
+                const button = document.createElement('button');
+                button.classList.add('btn-option');
+                if (btn.isCancel) button.classList.add('cancel');
+                if (btn.isBuy) button.classList.add('btn-buy');
+                button.innerText = btn.text;
+                button.onclick = () => handleButtonClick(btn.action, btn.text);
+                chatInputArea.appendChild(button);
+            });
+            
+            chatInputArea.scrollTop = chatInputArea.scrollHeight;
+        }
+
+        // Munculkan Input Teks
+        function showTextInput(placeholder) {
+            clearInputArea(); 
+            textInputWrapper.classList.remove('hidden');
+            userInput.placeholder = placeholder;
+            userInput.value = '';
+            userInput.focus();
+            
+            const cancelBtn = document.createElement('button');
+            cancelBtn.classList.add('btn-option', 'cancel');
+            cancelBtn.innerText = '❌ Batal';
+            cancelBtn.onclick = () => handleButtonClick('batal', '❌ Batal');
+            chatInputArea.appendChild(cancelBtn);
+        }
+
+        // Handle Kirim Teks
+        function submitTextInput() {
+            const val = userInput.value.trim();
+            if (!val) return;
+            
+            addMessage(val, 'user');
+            clearInputArea();
+
+            if (currentState === 'INPUT_NOMOR') {
+                userData.nomorWA = val;
+                currentState = 'PILIH_ALASAN';
+                setTimeout(() => {
+                    addMessage(`✅ Input Nomor WA Tersimpan: ${userData.nomorWA}<br><br>[Step 2/2]<br>Pilih Alasan Pembukaan Blokir:`, 'bot');
+                    renderButtons([
+                        { text: '📩 Salah Spam System', action: 'alasan_spam' },
+                        { text: '📱 Nomor Baru Digunakan', action: 'alasan_baru' },
+                        { text: '💼 Akun Bisnis Terkena Ban', action: 'alasan_bisnis' },
+                        { text: '❌ Batal', action: 'batal', isCancel: true }
+                    ]);
+                }, 500);
+            } else if (currentState === 'KODE_AKSES') {
+                setTimeout(() => {
+                    addMessage("✅ Kode Akses Valid!<br>Proses Unbanned sedang berjalan... (Simulasi)", 'bot');
+                    renderButtons([{ text: '🔙 Kembali ke Menu Utama', action: 'batal' }]);
+                }, 800);
+            }
+        }
+
+        // Enter di Input Teks
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') submitTextInput();
+        });
+
+        // Handle Klik Tombol
+        function handleButtonClick(action, text) {
+            addMessage(text, 'user');
+            
+            switch(action) {
+                case 'menu_unbanned':
+                    currentState = 'INPUT_NOMOR';
+                    setTimeout(() => {
+                        addMessage("[Step 1/2]<br>Silakan ketik Nomor WA yang Terblokir.<br><br>Contoh: +6281234567890", 'bot');
+                        showTextInput("Ketik nomor WA...");
+                    }, 500);
+                    break;
+
+                case 'menu_banned':
+                case 'menu_badakin':
+                    setTimeout(() => {
+                        addMessage("Maaf, layanan ini sedang tidak tersedia.", 'bot');
+                        renderMainMenu();
+                    }, 500);
+                    break;
+
+                case 'alasan_spam':
+                case 'alasan_baru':
+                case 'alasan_bisnis':
+                    userData.alasan = text;
+                    currentState = 'KODE_AKSES';
+                    setTimeout(() => {
+                        addMessage(`✅ Semua Form Selesai Diisi!<br><br>📌 Data Step 1: ${userData.nomorWA}<br>📌 Pilihan Step 2: ${userData.alasan}<br><br>Untuk melanjutkan, Anda memerlukan Kode Akses. Silakan pilih:`, 'bot');
+                        renderButtons([
+                            { text: '➡️ Saya Sudah Punya Kode Akses', action: 'input_kode' }, 
+                            { text: '🛒 Beli Kode Akses (QRIS)', action: 'menu_beli_akses', isBuy: true },
+                            { text: '❌ Batal', action: 'batal', isCancel: true }
+                        ]);
+                    }, 500);
+                    break;
+
+                case 'input_kode':
+                    setTimeout(() => {
+                        addMessage("🔑 VERIFIKASI KODE AKSES<br><br>Silakan ketik Kode Akses / Lisensi yang Anda miliki.", 'bot');
+                        showTextInput("Ketik kode akses...");
+                    }, 500);
+                    break;
+
+                // --- ALUR BELI KODE AKSES ---
+                case 'menu_beli_akses':
+                    currentState = 'BELI_AKSES';
+                    setTimeout(() => {
+                        addMessage("🛒 <b>Beli Akses Unbanned WA</b><br><br>Silakan scan QRIS di bawah ini untuk melakukan pembayaran sebesar <b>Rp33.000</b>:", 'bot');
+                        // Tampilkan gambar QRIS
+                        addMessage("", 'bot', true); 
+                        
+                        setTimeout(() => {
+                            addMessage("Setelah melakukan pembayaran, silakan klik tombol di bawah ini:", 'bot');
+                            renderButtons([
+                                { text: '✅ Saya Sudah Bayar', action: 'konfirmasi_bayar' },
+                                { text: '❌ Batal / Kembali ke Menu', action: 'batal', isCancel: true }
+                            ]);
+                        }, 1000);
+                    }, 500);
+                    break;
+
+                case 'konfirmasi_bayar':
+                    currentState = 'VERIFIKASI';
+                    setTimeout(() => {
+                        addMessage("✅ Pembayaran diterima!<br>Admin akan segera memverifikasi dan mengirim Kode Akses Anda.", 'bot');
+                        renderButtons([{ text: '🔙 Kembali ke Menu Utama', action: 'batal' }]);
+                    }, 1000);
+                    break;
+
+                case 'batal':
+                    currentState = 'MENU_UTAMA';
+                    setTimeout(() => {
+                        addMessage("Dibatalkan. Kembali ke menu utama.", 'bot');
+                        renderMainMenu();
+                    }, 500);
+                    break;
+            }
+        }
+
+        // Menu Utama (Dengan Tombol Beli Kode Akses di Bawah)
+        function renderMainMenu() {
+            currentState = 'MENU_UTAMA';
+            setTimeout(() => {
+                addMessage("🔥 LAYANAN AUTOMATION WHATSAPP 🔥<br><br>⚠️ Catatan: Semua layanan memerlukan Kode Akses.<br><br>Silakan pilih menu di bawah ini:", 'bot');
+                renderButtons([
+                    { text: '🔒 1. Unbanned WhatsApp', action: 'menu_unbanned' },
+                    { text: '🚫 2. Banned WhatsApp', action: 'menu_banned' },
+                    { text: '🛡️ 3. Badakin WhatsApp', action: 'menu_badakin' },
+                    // Tombol Beli Kode Akses di bawah
+                    { text: '🔑 Beli Kode Akses (QRIS)', action: 'menu_beli_akses', isBuy: true }
+                ]);
+            }, 500);
+        }
+
+        // Start
+        window.onload = () => {
+            addMessage("Verifikasi Berhasil. Selamat datang.", 'bot');
+            renderMainMenu();
+        };
+    </script>
+</body>
+</html>
