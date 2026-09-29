@@ -2,8 +2,8 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Automation Unban Whatsapp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Jasa Unban Whatsapp Otomatis</title>
     <style>
         * {
             margin: 0;
@@ -17,9 +17,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            height: 100dvh;
-            padding: 10px;
+            /* Memastikan body pas di layar HP */
+            width: 100vw;
+            height: 100vh;
+            height: 100dvh; /* Dynamic Viewport Height untuk browser mobile */
+            padding: 0;
             overflow: hidden;
         }
 
@@ -27,9 +29,7 @@
             width: 100%;
             max-width: 450px;
             height: 100%;
-            max-height: 850px;
             background-color: #111b21;
-            border-radius: 15px;
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -81,6 +81,7 @@
             gap: 10px;
             background-color: #0b141a;
             scroll-behavior: smooth;
+            min-height: 0; /* Penting agar flexbox bekerja */
         }
 
         /* Bubble Chat */
@@ -128,14 +129,14 @@
 
         /* Area Tombol - FIT TO PHONE & BISA SCROLL */
         .chat-input-area {
-            padding: 15px;
+            padding: 12px 15px;
             background-color: #202c33;
             display: flex;
             flex-direction: column;
             gap: 8px;
             border-top: 1px solid #2a3942;
             flex-shrink: 0;
-            max-height: 45vh; 
+            max-height: 50vh; /* Batasi tinggi area tombol agar tidak menutupi chat */
             overflow-y: auto; 
         }
 
@@ -175,6 +176,19 @@
 
         .btn-buy:hover {
             background-color: #2a4a3a;
+        }
+
+        /* Tombol Hubungi Admin */
+        .btn-admin {
+            background-color: #2a3942;
+            border-color: #ff9800;
+            color: #ff9800;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .btn-admin:hover {
+            background-color: #3b4a54;
         }
 
         /* Kotak Input Teks */
@@ -242,7 +256,7 @@
         <div class="chat-header">
             <div class="avatar">A</div>
             <div class="info">
-                <h3>AutoWA System Bot</h3>
+                <h3>Unban Whatsapp</h3>
                 <span>online</span>
             </div>
         </div>
@@ -281,7 +295,6 @@
             msgDiv.classList.add('message', sender);
             
             if (isImage) {
-                // Jika pesan berupa gambar QRIS
                 msgDiv.innerHTML = `
                     <div style="text-align: center;">
                         <img src="qris.png" alt="QRIS" class="qris-image" onerror="this.src='https://placehold.co/300x300/202c33/00a884?text=QRIS.png+Tidak+Ditemukan'">
@@ -290,7 +303,6 @@
                     </div>
                     <span class="time">${getTime()}</span>`;
             } else {
-                // Pesan teks biasa
                 msgDiv.innerHTML = `${text} <span class="time">${getTime()}</span>`;
             }
             
@@ -298,7 +310,7 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        // FUNGSI PENTING: Membersihkan area tombol sebelum merender yang baru
+        // Membersihkan area tombol
         function clearInputArea() {
             chatInputArea.innerHTML = ''; 
             textInputWrapper.classList.add('hidden'); 
@@ -313,11 +325,13 @@
                 button.classList.add('btn-option');
                 if (btn.isCancel) button.classList.add('cancel');
                 if (btn.isBuy) button.classList.add('btn-buy');
+                if (btn.isAdmin) button.classList.add('btn-admin');
                 button.innerText = btn.text;
                 button.onclick = () => handleButtonClick(btn.action, btn.text);
                 chatInputArea.appendChild(button);
             });
             
+            // Scroll otomatis ke bawah area tombol jika tombol banyak
             chatInputArea.scrollTop = chatInputArea.scrollHeight;
         }
 
@@ -357,10 +371,24 @@
                     ]);
                 }, 500);
             } else if (currentState === 'KODE_AKSES') {
-                setTimeout(() => {
-                    addMessage("✅ Kode Akses Valid!<br>Proses Unbanned sedang berjalan... (Simulasi)", 'bot');
-                    renderButtons([{ text: '🔙 Kembali ke Menu Utama', action: 'batal' }]);
-                }, 800);
+                // --- PERBAIKAN: Validasi Kode Akses ---
+                // Simulasi: Kode yang valid hanya "AKSES123"
+                if (val === "AKSES123") {
+                    setTimeout(() => {
+                        addMessage("✅ Kode Akses Valid!<br>Proses Unbanned sedang berjalan... (Simulasi)", 'bot');
+                        renderButtons([{ text: '🔙 Kembali ke Menu Utama', action: 'batal' }]);
+                    }, 800);
+                } else {
+                    // Kode Tidak Valid
+                    setTimeout(() => {
+                        addMessage("❌ <b>Kode Akses Tidak Valid!</b><br><br>Pastikan Anda memasukkan kode dengan benar. Jika belum memiliki kode, silakan beli atau hubungi admin.", 'bot');
+                        renderButtons([
+                            { text: '🛒 Beli Kode Akses (QRIS)', action: 'menu_beli_akses', isBuy: true },
+                            { text: '📞 Hubungi Admin', action: 'hubungi_admin', isAdmin: true },
+                            { text: '❌ Batal', action: 'batal', isCancel: true }
+                        ]);
+                    }, 800);
+                }
             }
         }
 
@@ -438,6 +466,13 @@
                     }, 1000);
                     break;
 
+                case 'hubungi_admin':
+                    setTimeout(() => {
+                        addMessage("📞 <b>Hubungi Admin</b><br><br>Silakan hubungi admin melalui WhatsApp di nomor: <b>+6281234567890</b><br><br>Terima kasih.", 'bot');
+                        renderButtons([{ text: '🔙 Kembali ke Menu Utama', action: 'batal' }]);
+                    }, 500);
+                    break;
+
                 case 'batal':
                     currentState = 'MENU_UTAMA';
                     setTimeout(() => {
@@ -448,7 +483,7 @@
             }
         }
 
-        // Menu Utama (Dengan Tombol Beli Kode Akses di Bawah)
+        // Menu Utama
         function renderMainMenu() {
             currentState = 'MENU_UTAMA';
             setTimeout(() => {
@@ -457,7 +492,6 @@
                     { text: '🔒 1. Unbanned WhatsApp', action: 'menu_unbanned' },
                     { text: '🚫 2. Banned WhatsApp', action: 'menu_banned' },
                     { text: '🛡️ 3. Badakin WhatsApp', action: 'menu_badakin' },
-                    // Tombol Beli Kode Akses di bawah
                     { text: '🔑 Beli Kode Akses (QRIS)', action: 'menu_beli_akses', isBuy: true }
                 ]);
             }, 500);
